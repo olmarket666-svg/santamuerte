@@ -16,6 +16,7 @@
   --green:#27ae60;--green2:#2ecc71;
   --blue:#2980b9;--blue2:#3498db;
   --orange:#d35400;--orange2:#e67e22;
+  --purple:#8e44ad;--purple2:#9b59b6;
 }
 body{background:var(--bg);color:var(--text);font-family:'Oswald',sans-serif;min-height:100vh;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
@@ -78,6 +79,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .btn-warning:hover{background:var(--orange2)}
 .btn-gold{background:var(--gold);color:var(--bg);font-weight:600}
 .btn-gold:hover{background:var(--gold2)}
+.btn-purple{background:var(--purple);color:#fff;font-size:.8rem;padding:.4rem .8rem}
+.btn-purple:hover{background:var(--purple2)}
 .btn-full{width:100%;justify-content:center}
 .login-error{color:var(--red3);font-size:.8rem;text-align:center;margin-top:.5rem;letter-spacing:1px;min-height:1.2em}
 .login-back{text-align:center;margin-top:1rem}
@@ -123,6 +126,26 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .stat-value{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;color:var(--gold)}
 .stat-label{font-size:.7rem;letter-spacing:2px;color:var(--text2);text-transform:uppercase;margin-top:.3rem}
 
+/* DASHBOARD MONEY BLOCKS */
+.money-block{background:var(--bg2);border:1px solid var(--border);padding:1.2rem;margin-bottom:1rem;border-left:4px solid transparent}
+.money-block.dirty{border-left-color:var(--red)}
+.money-block.clean{border-left-color:var(--green)}
+.money-block.invoice{border-left-color:var(--orange)}
+.money-block.net{border-left-color:var(--gold)}
+.money-block-title{font-size:.7rem;letter-spacing:3px;color:var(--text3);text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.money-block-title svg{flex-shrink:0}
+.money-detail{display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;border-bottom:1px solid var(--border);font-size:.82rem}
+.money-detail:last-child{border-bottom:none}
+.money-detail-label{color:var(--text2)}
+.money-detail-value{font-family:'Share Tech Mono',monospace;color:var(--gold)}
+.money-total{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;margin-top:.4rem;border-top:1px solid var(--border2);font-size:1rem;letter-spacing:1px}
+.money-total-label{color:var(--text);font-weight:600}
+.money-total-value{font-family:'Share Tech Mono',monospace;font-size:1.2rem}
+.money-total-value.dirty{color:var(--red3)}
+.money-total-value.clean{color:var(--green2)}
+.money-total-value.invoice{color:var(--orange2)}
+.money-total-value.net{color:var(--gold2)}
+
 /* TABLE */
 .table-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:.85rem}
@@ -136,6 +159,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .badge-blue{background:rgba(52,152,219,.15);color:var(--blue2);border:1px solid rgba(52,152,219,.4)}
 .badge-gray{background:var(--bg3);color:var(--text2);border:1px solid var(--border2)}
 .badge-orange{background:rgba(211,84,0,.2);color:var(--orange2);border:1px solid rgba(211,84,0,.4)}
+.badge-purple{background:rgba(142,68,173,.2);color:var(--purple2);border:1px solid rgba(142,68,173,.4)}
 
 /* MODAL */
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -213,6 +237,9 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .sell-card{background:var(--bg2);border:1px solid var(--border);padding:1.5rem;margin-bottom:1rem}
 .sell-card-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 
+/* SQL SCHEMA BOX */
+.schema-box{background:var(--bg3);border:1px solid var(--border2);padding:1rem;margin-bottom:1rem;font-family:'Share Tech Mono',monospace;font-size:.75rem;color:var(--text2);white-space:pre-wrap;line-height:1.7;max-height:300px;overflow-y:auto}
+
 /* STOCK WARNING */
 .stock-warning{color:var(--red3);font-size:.75rem;letter-spacing:1px;margin-top:.3rem}
 .stock-ok{color:var(--green2);font-size:.75rem;letter-spacing:1px;margin-top:.3rem}
@@ -235,8 +262,16 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
 /* PASSWORD TOGGLE */
 .pwd-wrap{position:relative}
 .pwd-wrap input{padding-right:2.5rem}
-.pwd-eye{position:absolute;right:.7rem;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text3);background:none;border:none;display:flex;align-items:center;padding:0}
+.pwd-eye{position:absolute;right:.7rem;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text3);background:none;border:none;display:flex;align-items:padding:0}
 .pwd-eye:hover{color:var(--text2)}
+
+/* RUN CARD */
+.run-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.run-type-card{background:var(--bg2);border:1px solid var(--border);border-top:3px solid transparent;padding:1.2rem;text-align:center;cursor:pointer;transition:all .2s}
+.run-type-card:hover{border-top-color:var(--green)}
+.run-type-card.selected{border-top-color:var(--green2);background:var(--bg3)}
+.run-type-name{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:3px;color:var(--green2)}
+.run-type-desc{font-size:.75rem;color:var(--text2);letter-spacing:.5px;margin-top:.2rem}
 </style>
 </head>
 <body>
@@ -295,9 +330,6 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
   <symbol id="ico-offline" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="8" fill="#6a5a4a"/>
   </symbol>
-  <symbol id="ico-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M20 7l-8-4-8 4v10l8 4 8-4V7z"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="20 7 12 11 4 7"/>
-  </symbol>
   <symbol id="ico-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
     <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/>
   </symbol>
@@ -315,6 +347,21 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
   </symbol>
   <symbol id="ico-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+  </symbol>
+  <symbol id="ico-invoice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/><line x1="14" y1="17" x2="16" y2="17"/>
+  </symbol>
+  <symbol id="ico-run" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="13" cy="6" r="2"/><path d="M20 17L16 10l-3 4-2-2-3 5"/><path d="M4 17h16"/>
+  </symbol>
+  <symbol id="ico-dirty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+  </symbol>
+  <symbol id="ico-clean" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+  </symbol>
+  <symbol id="ico-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 7l-8-4-8 4v10l8 4 8-4V7z"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="20 7 12 11 4 7"/>
   </symbol>
 </svg>
 
@@ -358,12 +405,11 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
       <svg class="icon-sm"><use href="#ico-check"/></svg> Connexion
     </button>
     <div class="config-steps">
-      <div class="config-steps-title">Étapes de configuration</div>
+      <div class="config-steps-title">Nouvelles tables requises</div>
       <div class="config-steps-body">
-        1. Créez un projet sur <span style="color:var(--gold)">supabase.com</span><br>
-        2. Dans SQL Editor, exécutez le fichier <span class="mono" style="color:var(--red3)">supabase_schema.sql</span><br>
-        3. Entrez l'URL et la clé publique ci-dessus<br>
-        4. Cliquez Connexion
+        Exécutez dans SQL Editor :<br>
+        <span style="color:var(--gold)" class="mono">CREATE TABLE runs (id uuid DEFAULT gen_random_uuid() PRIMARY KEY, member_id uuid REFERENCES members(id), member_name text, money_earned numeric DEFAULT 0, company text, created_at timestamptz DEFAULT now());</span><br><br>
+        <span style="color:var(--gold)" class="mono">CREATE TABLE invoices (id uuid DEFAULT gen_random_uuid() PRIMARY KEY, item text, price numeric DEFAULT 0, money_type text DEFAULT 'sale', created_at timestamptz DEFAULT now());</span>
       </div>
     </div>
   </div>
@@ -448,9 +494,19 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
           </button>
         </div>
         <div class="stat-grid" id="adminStats"><div class="loader-wrap"><div class="spinner"></div>Chargement...</div></div>
+
+        <!-- MONEY OVERVIEW -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem" id="moneyOverview">
+          <div class="loader-wrap" style="grid-column:1/-1"><div class="spinner"></div>Calcul des finances...</div>
+        </div>
+
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
           <div class="card"><div class="card-title">Ventes récentes</div><div id="recentSales"><div class="loader-wrap"><div class="spinner"></div></div></div></div>
           <div class="card"><div class="card-title">Activités récentes</div><div id="recentActivities"><div class="loader-wrap"><div class="spinner"></div></div></div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
+          <div class="card"><div class="card-title">Runs récents</div><div id="recentRuns"><div class="loader-wrap"><div class="spinner"></div></div></div></div>
+          <div class="card"><div class="card-title">Dernières factures</div><div id="recentInvoices"><div class="loader-wrap"><div class="spinner"></div></div></div></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
           <div class="card"><div class="card-title">Top membres — Ventes</div><div id="topMembersSales"></div></div>
@@ -482,8 +538,8 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
         <div id="alertMembers"></div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>#</th><th>Pseudo</th><th>Grade</th><th>Statut</th><th>Ventes</th><th>Gains ventes</th><th>Opérations</th><th>Gains ops</th><th>Actions</th></tr></thead>
-            <tbody id="membersTable"><tr><td colspan="9"><div class="loader-wrap"><div class="spinner"></div>Chargement...</div></td></tr></tbody>
+            <thead><tr><th>#</th><th>Pseudo</th><th>Grade</th><th>Statut</th><th>Ventes</th><th>Gains ventes</th><th>Opérations</th><th>Gains ops</th><th>Runs</th><th>Gains runs</th><th>Actions</th></tr></thead>
+            <tbody id="membersTable"><tr><td colspan="11"><div class="loader-wrap"><div class="spinner"></div>Chargement...</div></td></tr></tbody>
           </table>
         </div>
       </div>
@@ -508,6 +564,33 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
           <table>
             <thead><tr><th>Date</th><th>Membre</th><th>Type</th><th>Gains ($)</th><th>Actions</th></tr></thead>
             <tbody id="activitiesTable"><tr><td colspan="5"><div class="loader-wrap"><div class="spinner"></div>Chargement...</div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ADMIN: Factures -->
+      <div id="page-invoices" class="page">
+        <div class="page-header">
+          <div><div class="page-title">Factures</div><div class="page-subtitle">Traçabilité des dépenses</div></div>
+          <button class="btn btn-primary" id="btnAddInvoice"><svg class="icon-sm"><use href="#ico-plus"/></svg> Nouvelle facture</button>
+        </div>
+        <div class="stat-grid" id="invoiceStats"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Date</th><th>Item</th><th>Type argent</th><th>Prix ($)</th><th>Actions</th></tr></thead>
+            <tbody id="invoicesTable"><tr><td colspan="5"><div class="loader-wrap"><div class="spinner"></div>Chargement...</div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ADMIN & MEMBER: Runs -->
+      <div id="page-admin-runs" class="page">
+        <div class="page-header"><div><div class="page-title">Runs — Club</div><div class="page-subtitle">Argent propre généré</div></div></div>
+        <div class="stat-grid" id="adminRunStats"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Date</th><th>Membre</th><th>Entreprise</th><th>Gains ($)</th><th>Actions</th></tr></thead>
+            <tbody id="adminRunsTable"><tr><td colspan="5"><div class="loader-wrap"><div class="spinner"></div>Chargement...</div></td></tr></tbody>
           </table>
         </div>
       </div>
@@ -604,6 +687,33 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
         </div>
       </div>
 
+      <!-- MEMBER: Runs -->
+      <div id="page-runs" class="page">
+        <div class="page-header"><div><div class="page-title">Runs</div><div class="page-subtitle">Argent propre — entreprises légitimes</div></div></div>
+        <div id="memberRunStats" class="stat-grid" style="margin-bottom:1.5rem"></div>
+        <div class="sell-card">
+          <div class="sell-card-title">
+            <svg class="icon-sm" style="color:var(--green2)"><use href="#ico-run"/></svg>
+            Déclarer un run
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Entreprise / Source</label><input type="text" id="runCompany" placeholder="Ex: Transport, Garage, Import..."></div>
+            <div class="form-group"><label>Argent gagné ($)</label><input type="number" id="runMoney" placeholder="0" min="0"></div>
+          </div>
+          <div style="display:flex;justify-content:flex-end">
+            <button class="btn btn-success" onclick="submitRun()"><svg class="icon-sm"><use href="#ico-check"/></svg> Enregistrer le run</button>
+          </div>
+          <div id="alertRun"></div>
+        </div>
+        <div class="section-divider">Mes runs</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Date</th><th>Entreprise</th><th>Gains ($)</th></tr></thead>
+            <tbody id="myRunsTable"><tr><td colspan="3"><div class="loader-wrap"><div class="spinner"></div></div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
       <!-- Grades -->
       <div id="page-grades" class="page">
         <div class="page-header"><div><div class="page-title">Grades du Club</div><div class="page-subtitle">Hiérarchie Vibora Bendito MC</div></div></div>
@@ -645,9 +755,7 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
     <div class="form-group"><label>Grade</label><select id="memberGrade"></select></div>
     <div class="form-group">
       <label>Mot de passe</label>
-      <div class="pwd-wrap">
-        <input type="text" id="memberPassword" placeholder="Choisir un mot de passe" autocomplete="off">
-      </div>
+      <input type="text" id="memberPassword" placeholder="Choisir un mot de passe" autocomplete="off">
     </div>
     <div id="alertMemberCreate"></div>
     <div class="modal-btns">
@@ -666,14 +774,34 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
     <div class="form-group"><label>Grade</label><select id="editMemberGrade"></select></div>
     <div class="form-group">
       <label>Nouveau mot de passe <span style="color:var(--text3)">(laisser vide = inchangé)</span></label>
-      <div class="pwd-wrap">
-        <input type="text" id="editMemberPwd" placeholder="Laisser vide pour ne pas modifier">
-      </div>
+      <input type="text" id="editMemberPwd" placeholder="Laisser vide pour ne pas modifier">
     </div>
     <div id="alertEditMember"></div>
     <div class="modal-btns">
       <button class="btn btn-secondary" onclick="closeModal('editMemberModal')">Annuler</button>
       <button class="btn btn-primary" onclick="saveEditMember()"><svg class="icon-sm"><use href="#ico-check"/></svg> Sauvegarder</button>
+    </div>
+  </div>
+</div>
+
+<!-- Invoice Modal -->
+<div class="modal-bg hidden" id="invoiceModal">
+  <div class="modal">
+    <div class="modal-title" id="invoiceModalTitle">Nouvelle facture</div>
+    <input type="hidden" id="invoiceEditId">
+    <div class="form-group"><label>Item / Description</label><input type="text" id="invoiceItem" placeholder="Ex: Armes, Local, Véhicule..."></div>
+    <div class="form-group"><label>Prix ($)</label><input type="number" id="invoicePrice" placeholder="0" min="0"></div>
+    <div class="form-group">
+      <label>Type d'argent utilisé</label>
+      <select id="invoiceMoneyType">
+        <option value="sale">💀 Argent Sale</option>
+        <option value="clean">✅ Argent Propre</option>
+      </select>
+    </div>
+    <div id="alertInvoiceModal"></div>
+    <div class="modal-btns">
+      <button class="btn btn-secondary" onclick="closeModal('invoiceModal')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveInvoice()"><svg class="icon-sm"><use href="#ico-check"/></svg> Enregistrer</button>
     </div>
   </div>
 </div>
@@ -688,7 +816,7 @@ const ADMIN_PASS = 'vibora2024';
 let SB_URL = 'https://cmiczxcyomvcoeoszabv.supabase.co';
 let SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtaWN6eGN5b212Y29lb3N6YWJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxMzY1NTgsImV4cCI6MjA5NTcxMjU1OH0.gHRrPQv6iHKCOVWhvyLYfLn9R5lJEdKlh6U-CnNdx6o';
 let currentUser = null, loginType = 'member', selectedActivity = null;
-let drugStockCache = {}; // cache drug stocks for sale form hint
+let drugStockCache = {};
 
 const GRADES = [
   {rank:1, name:'Hangaround', desc:'Candidat au club. Période d\'observation. Il assiste aux événements et montre son intérêt.'},
@@ -746,10 +874,6 @@ async function sbDelete(table, id) {
   if (!r.ok) throw new Error(await r.text());
   return true;
 }
-async function testConnection() {
-  const r = await fetch(`${SB_URL}/rest/v1/drugs?limit=1`, {headers: sbHeaders()});
-  return r.ok;
-}
 
 // ===================================================
 // CONFIG
@@ -775,7 +899,6 @@ function loader(msg = 'Chargement...') {
   return `<div class="loader-wrap"><div class="spinner"></div>${msg}</div>`;
 }
 
-// Toast notifications
 function toast(msg, type = 'success') {
   const container = document.getElementById('toast');
   const el = document.createElement('div');
@@ -789,7 +912,6 @@ function toast(msg, type = 'success') {
   }, 3200);
 }
 
-// Inline alert
 function showAlert(id, msg, type = 'success') {
   const el = document.getElementById(id);
   if (!el) return;
@@ -797,14 +919,12 @@ function showAlert(id, msg, type = 'success') {
   setTimeout(() => { if (el) el.innerHTML = ''; }, 4500);
 }
 
-// Confirm modal
 function confirm2(msg, onOk) {
   document.getElementById('confirmMsg').innerHTML = msg;
   document.getElementById('confirmOkBtn').onclick = () => { closeModal('confirmModal'); onOk(); };
   openModal('confirmModal');
 }
 
-// Password toggle
 function togglePwd(inputId, btn) {
   const input = document.getElementById(inputId);
   const isText = input.type === 'text';
@@ -909,6 +1029,8 @@ function buildSidebar() {
       <div class="sidebar-item" data-page="members" onclick="navigateTo('members')">${ico('ico-users','sidebar-icon')} Membres</div>
       <div class="sidebar-item" data-page="admin-sales" onclick="navigateTo('admin-sales')">${ico('ico-chart','sidebar-icon')} Rapport Ventes</div>
       <div class="sidebar-item" data-page="admin-activities" onclick="navigateTo('admin-activities')">${ico('ico-house','sidebar-icon')} Camb. & ATM</div>
+      <div class="sidebar-item" data-page="admin-runs" onclick="navigateTo('admin-runs')">${ico('ico-run','sidebar-icon')} Runs</div>
+      <div class="sidebar-item" data-page="invoices" onclick="navigateTo('invoices')">${ico('ico-invoice','sidebar-icon')} Factures</div>
       <div class="sidebar-label" style="margin-top:.5rem">Club</div>
       <div class="sidebar-item" data-page="grades" onclick="navigateTo('grades')">${ico('ico-trophy','sidebar-icon')} Grades</div>
       <div class="sidebar-item" data-page="rules" onclick="navigateTo('rules')">${ico('ico-scroll','sidebar-icon')} Règlement</div>`;
@@ -918,6 +1040,7 @@ function buildSidebar() {
       <div class="sidebar-item" data-page="home" onclick="navigateTo('home')">${ico('ico-users','sidebar-icon')} Accueil</div>
       <div class="sidebar-item" data-page="member-drugs" onclick="navigateTo('member-drugs')">${ico('ico-pill','sidebar-icon')} Produits & Ventes</div>
       <div class="sidebar-item" data-page="activities" onclick="navigateTo('activities')">${ico('ico-atm','sidebar-icon')} Camb. & ATM</div>
+      <div class="sidebar-item" data-page="runs" onclick="navigateTo('runs')">${ico('ico-run','sidebar-icon')} Runs</div>
       <div class="sidebar-label" style="margin-top:.5rem">Club</div>
       <div class="sidebar-item" data-page="grades" onclick="navigateTo('grades')">${ico('ico-trophy','sidebar-icon')} Grades</div>
       <div class="sidebar-item" data-page="rules" onclick="navigateTo('rules')">${ico('ico-scroll','sidebar-icon')} Règlement</div>`;
@@ -940,9 +1063,12 @@ function renderPage(p) {
     'members': renderMembersAdmin,
     'admin-sales': renderAdminSales,
     'admin-activities': renderAdminActivities,
+    'admin-runs': renderAdminRuns,
+    'invoices': renderInvoices,
     'home': renderMemberHome,
     'member-drugs': renderMemberDrugs,
     'activities': renderActivities,
+    'runs': renderMemberRuns,
     'grades': renderGrades,
     'rules': renderRules,
   }[p] || function(){})();
@@ -961,47 +1087,121 @@ function populateGradeSelects() {
 // ===================================================
 async function renderDashboard() {
   document.getElementById('adminStats').innerHTML = loader();
+  document.getElementById('moneyOverview').innerHTML = `<div class="loader-wrap" style="grid-column:1/-1"><div class="spinner"></div>Calcul des finances...</div>`;
   document.getElementById('recentSales').innerHTML = loader();
   document.getElementById('recentActivities').innerHTML = loader();
+  document.getElementById('recentRuns').innerHTML = loader();
+  document.getElementById('recentInvoices').innerHTML = loader();
   document.getElementById('topMembersSales').innerHTML = loader();
   document.getElementById('topMembersAct').innerHTML = loader();
+
   try {
-    const [members, drugs, sales, activities] = await Promise.all([
-      sbGet('members'), sbGet('drugs'), sbGet('sales'), sbGet('activities')
+    const [members, drugs, sales, activities, runs, invoices] = await Promise.all([
+      sbGet('members'), sbGet('drugs'), sbGet('sales'), sbGet('activities'),
+      sbGet('runs').catch(() => []), sbGet('invoices').catch(() => [])
     ]);
+
+    // ---- STATS ----
     const totalSalesMoney = sales.reduce((s, x) => s + Number(x.money_earned), 0);
     const totalActMoney = activities.reduce((s, x) => s + Number(x.money_earned), 0);
+    const totalRunsMoney = runs.reduce((s, x) => s + Number(x.money_earned), 0);
+    const totalInvoiceDirty = invoices.filter(i => i.money_type === 'sale').reduce((s, x) => s + Number(x.price), 0);
+    const totalInvoiceClean = invoices.filter(i => i.money_type === 'clean').reduce((s, x) => s + Number(x.price), 0);
+    const totalDirty = totalSalesMoney + totalActMoney;
+    const totalClean = totalRunsMoney;
+    const netDirty = totalDirty - totalInvoiceDirty;
+    const netClean = totalClean - totalInvoiceClean;
     const onlineCount = members.filter(m => m.status === 'online').length;
 
     document.getElementById('adminStats').innerHTML = `
       <div class="stat-card"><div class="stat-value">${members.length}</div><div class="stat-label">Membres</div></div>
       <div class="stat-card"><div class="stat-value" style="color:var(--green2)">${onlineCount}</div><div class="stat-label">En ligne</div></div>
       <div class="stat-card"><div class="stat-value">${drugs.length}</div><div class="stat-label">Produits</div></div>
-      <div class="stat-card"><div class="stat-value">${fmtMoney(totalSalesMoney)}</div><div class="stat-label">Revenus ventes</div></div>
-      <div class="stat-card"><div class="stat-value">${activities.filter(a => a.type === 'cambriolage').length}</div><div class="stat-label">Cambriolages</div></div>
-      <div class="stat-card"><div class="stat-value">${activities.filter(a => a.type === 'atm').length}</div><div class="stat-label">ATM</div></div>
-      <div class="stat-card"><div class="stat-value">${fmtMoney(totalActMoney)}</div><div class="stat-label">Revenus ops</div></div>
-      <div class="stat-card"><div class="stat-value">${fmtMoney(totalSalesMoney + totalActMoney)}</div><div class="stat-label">Total général</div></div>`;
+      <div class="stat-card"><div class="stat-value">${activities.filter(a=>a.type==='cambriolage').length}</div><div class="stat-label">Cambriolages</div></div>
+      <div class="stat-card"><div class="stat-value">${activities.filter(a=>a.type==='atm').length}</div><div class="stat-label">ATM</div></div>
+      <div class="stat-card"><div class="stat-value">${runs.length}</div><div class="stat-label">Runs</div></div>
+      <div class="stat-card"><div class="stat-value">${invoices.length}</div><div class="stat-label">Factures</div></div>`;
 
-    document.getElementById('recentSales').innerHTML = sales.slice(0, 8).map(s => `
+    // ---- MONEY OVERVIEW ----
+    document.getElementById('moneyOverview').innerHTML = `
+      <div class="money-block dirty">
+        <div class="money-block-title">
+          <svg class="icon-sm" style="color:var(--red3)"><use href="#ico-dirty"/></svg>
+          Argent Sale
+        </div>
+        <div class="money-detail"><span class="money-detail-label">Drogue (ventes)</span><span class="money-detail-value">${fmtMoney(totalSalesMoney)}</span></div>
+        <div class="money-detail"><span class="money-detail-label">Cambriolages</span><span class="money-detail-value">${fmtMoney(activities.filter(a=>a.type==='cambriolage').reduce((s,x)=>s+Number(x.money_earned),0))}</span></div>
+        <div class="money-detail"><span class="money-detail-label">ATM</span><span class="money-detail-value">${fmtMoney(activities.filter(a=>a.type==='atm').reduce((s,x)=>s+Number(x.money_earned),0))}</span></div>
+        <div class="money-total"><span class="money-total-label">Total sale</span><span class="money-total-value dirty">${fmtMoney(totalDirty)}</span></div>
+      </div>
+
+      <div class="money-block clean">
+        <div class="money-block-title">
+          <svg class="icon-sm" style="color:var(--green2)"><use href="#ico-clean"/></svg>
+          Argent Propre
+        </div>
+        <div class="money-detail"><span class="money-detail-label">Runs / Entreprises</span><span class="money-detail-value">${fmtMoney(totalRunsMoney)}</span></div>
+        <div class="money-detail"><span class="money-detail-label">Nb. runs</span><span class="money-detail-value">${runs.length} runs</span></div>
+        <div class="money-detail"><span class="money-detail-label">Moy. par run</span><span class="money-detail-value">${runs.length ? fmtMoney(Math.round(totalRunsMoney / runs.length)) : '$0'}</span></div>
+        <div class="money-total"><span class="money-total-label">Total propre</span><span class="money-total-value clean">${fmtMoney(totalClean)}</span></div>
+      </div>
+
+      <div class="money-block invoice">
+        <div class="money-block-title">
+          <svg class="icon-sm" style="color:var(--orange2)"><use href="#ico-invoice"/></svg>
+          Factures payées
+        </div>
+        <div class="money-detail"><span class="money-detail-label">Dépenses (sale)</span><span class="money-detail-value" style="color:var(--red3)">&minus;${fmtMoney(totalInvoiceDirty)}</span></div>
+        <div class="money-detail"><span class="money-detail-label">Dépenses (propre)</span><span class="money-detail-value" style="color:var(--orange2)">&minus;${fmtMoney(totalInvoiceClean)}</span></div>
+        <div class="money-detail"><span class="money-detail-label">Nb. factures</span><span class="money-detail-value">${invoices.length}</span></div>
+        <div class="money-total"><span class="money-total-label">Total dépenses</span><span class="money-total-value invoice">&minus;${fmtMoney(totalInvoiceDirty + totalInvoiceClean)}</span></div>
+      </div>
+
+      <div class="money-block net">
+        <div class="money-block-title">
+          <svg class="icon-sm" style="color:var(--gold)"><use href="#ico-money"/></svg>
+          Solde Net
+        </div>
+        <div class="money-detail"><span class="money-detail-label">Sale net (après fact.)</span><span class="money-detail-value" style="color:${netDirty>=0?'var(--red3)':'var(--text3)'}">${fmtMoney(netDirty)}</span></div>
+        <div class="money-detail"><span class="money-detail-label">Propre net (après fact.)</span><span class="money-detail-value" style="color:${netClean>=0?'var(--green2)':'var(--text3)'}">${fmtMoney(netClean)}</span></div>
+        <div class="money-detail"><span class="money-detail-label">Total brut</span><span class="money-detail-value">${fmtMoney(totalDirty + totalClean)}</span></div>
+        <div class="money-total"><span class="money-total-label">Solde total</span><span class="money-total-value net">${fmtMoney(netDirty + netClean)}</span></div>
+      </div>`;
+
+    // ---- RECENT ----
+    document.getElementById('recentSales').innerHTML = sales.slice(0, 6).map(s => `
       <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.82rem;gap:.5rem">
         <span style="color:var(--text2);min-width:80px">${s.member_name}</span>
         <span style="color:var(--text3);flex:1">${s.drug_name}</span>
         <span style="color:var(--gold)" class="mono">${fmtMoney(s.money_earned)}</span>
       </div>`).join('') || '<div class="empty">Aucune vente</div>';
 
-    document.getElementById('recentActivities').innerHTML = activities.slice(0, 8).map(a => `
+    document.getElementById('recentActivities').innerHTML = activities.slice(0, 6).map(a => `
       <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.82rem;gap:.5rem">
         <span style="color:var(--text2);min-width:80px">${a.member_name}</span>
-        <span class="badge ${a.type === 'cambriolage' ? 'badge-red' : 'badge-blue'}">${a.type === 'cambriolage' ? 'CAMB' : 'ATM'}</span>
+        <span class="badge ${a.type==='cambriolage'?'badge-red':'badge-blue'}">${a.type==='cambriolage'?'CAMB':'ATM'}</span>
         <span style="color:var(--gold)" class="mono">${fmtMoney(a.money_earned)}</span>
       </div>`).join('') || '<div class="empty">Aucune activité</div>';
 
+    document.getElementById('recentRuns').innerHTML = runs.slice(0, 6).map(r => `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.82rem;gap:.5rem">
+        <span style="color:var(--text2);min-width:80px">${r.member_name}</span>
+        <span style="color:var(--text3);flex:1">${r.company || '—'}</span>
+        <span style="color:var(--green2)" class="mono">${fmtMoney(r.money_earned)}</span>
+      </div>`).join('') || '<div class="empty">Aucun run déclaré</div>';
+
+    document.getElementById('recentInvoices').innerHTML = invoices.slice(0, 6).map(inv => `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.82rem;gap:.5rem">
+        <span style="color:var(--text);flex:1">${inv.item}</span>
+        <span class="badge ${inv.money_type==='sale'?'badge-red':'badge-green'}">${inv.money_type==='sale'?'SALE':'PROPRE'}</span>
+        <span style="color:var(--orange2)" class="mono">&minus;${fmtMoney(inv.price)}</span>
+      </div>`).join('') || '<div class="empty">Aucune facture</div>';
+
     // Top membres ventes
     const byMemberSales = {};
-    sales.forEach(s => { byMemberSales[s.member_name] = (byMemberSales[s.member_name] || 0) + Number(s.money_earned); });
-    const topSales = Object.entries(byMemberSales).sort((a, b) => b[1] - a[1]).slice(0, 5);
-    document.getElementById('topMembersSales').innerHTML = topSales.length ? topSales.map(([name, money], i) => `
+    sales.forEach(s => { byMemberSales[s.member_name] = (byMemberSales[s.member_name]||0) + Number(s.money_earned); });
+    const topSales = Object.entries(byMemberSales).sort((a,b)=>b[1]-a[1]).slice(0,5);
+    document.getElementById('topMembersSales').innerHTML = topSales.length ? topSales.map(([name,money],i) => `
       <div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.82rem;gap:.5rem">
         <span style="color:var(--text3);min-width:20px">#${i+1}</span>
         <span style="flex:1;color:var(--text)">${name}</span>
@@ -1010,9 +1210,9 @@ async function renderDashboard() {
 
     // Top membres activités
     const byMemberAct = {};
-    activities.forEach(a => { byMemberAct[a.member_name] = (byMemberAct[a.member_name] || 0) + Number(a.money_earned); });
-    const topAct = Object.entries(byMemberAct).sort((a, b) => b[1] - a[1]).slice(0, 5);
-    document.getElementById('topMembersAct').innerHTML = topAct.length ? topAct.map(([name, money], i) => `
+    activities.forEach(a => { byMemberAct[a.member_name] = (byMemberAct[a.member_name]||0) + Number(a.money_earned); });
+    const topAct = Object.entries(byMemberAct).sort((a,b)=>b[1]-a[1]).slice(0,5);
+    document.getElementById('topMembersAct').innerHTML = topAct.length ? topAct.map(([name,money],i) => `
       <div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.82rem;gap:.5rem">
         <span style="color:var(--text3);min-width:20px">#${i+1}</span>
         <span style="flex:1;color:var(--text)">${name}</span>
@@ -1041,10 +1241,7 @@ async function renderDrugs() {
   tbody.innerHTML = `<tr><td colspan="7">${loader()}</td></tr>`;
   try {
     const [drugs, sales] = await Promise.all([sbGet('drugs'), sbGet('sales')]);
-    if (!drugs.length) {
-      tbody.innerHTML = '<tr><td colspan="7"><div class="empty">Aucun produit créé</div></td></tr>';
-      return;
-    }
+    if (!drugs.length) { tbody.innerHTML = '<tr><td colspan="7"><div class="empty">Aucun produit créé</div></td></tr>'; return; }
     tbody.innerHTML = drugs.map((d, i) => {
       const dSales = sales.filter(s => s.drug_id === d.id);
       const totalQty = dSales.reduce((s, x) => s + Number(x.qty_sold), 0);
@@ -1053,15 +1250,14 @@ async function renderDrugs() {
       const pct = d.stock > 0 ? (remaining / d.stock * 100) : 0;
       const stockColor = pct < 20 ? 'var(--red3)' : pct < 50 ? 'var(--orange2)' : 'var(--green2)';
       return `<tr>
-        <td>${i+1}</td>
-        <td><strong>${d.name}</strong></td>
+        <td>${i+1}</td><td><strong>${d.name}</strong></td>
         <td class="mono">${Number(d.stock).toFixed(1)} g</td>
         <td class="mono">${totalQty.toFixed(1)} g</td>
         <td class="mono" style="color:var(--gold)">${fmtMoney(totalMoney)}</td>
         <td class="mono" style="color:${stockColor}">${remaining.toFixed(1)} g</td>
         <td><div class="td-actions">
           <button class="btn btn-warning" onclick="editDrug('${d.id}','${d.name.replace(/'/g,"\\'")}',${d.stock})">${ico('ico-edit','icon-sm')} Edit</button>
-          <button class="btn btn-danger" onclick="deleteDrug('${d.id}','${d.name.replace(/'/g,"\\'")}' )">${ico('ico-trash','icon-sm')} Suppr.</button>
+          <button class="btn btn-danger" onclick="deleteDrug('${d.id}','${d.name.replace(/'/g,"\\'")}')">${ico('ico-trash','icon-sm')} Suppr.</button>
         </div></td>
       </tr>`;
     }).join('');
@@ -1069,7 +1265,6 @@ async function renderDrugs() {
     tbody.innerHTML = `<tr><td colspan="7"><div class="alert alert-danger">Erreur: ${e.message}</div></td></tr>`;
   }
 }
-
 function editDrug(id, name, stock) {
   document.getElementById('drugModalTitle').textContent = 'Modifier le produit';
   document.getElementById('drugEditId').value = id;
@@ -1078,35 +1273,21 @@ function editDrug(id, name, stock) {
   document.getElementById('alertDrugModal').innerHTML = '';
   openModal('drugModal');
 }
-
 async function saveDrug() {
   const id = document.getElementById('drugEditId').value;
   const name = document.getElementById('drugName').value.trim();
   const stock = parseFloat(document.getElementById('drugStock').value);
-  if (!name || isNaN(stock) || stock < 0) {
-    showAlert('alertDrugModal', 'Remplissez tous les champs correctement', 'danger');
-    return;
-  }
+  if (!name || isNaN(stock) || stock < 0) { showAlert('alertDrugModal','Remplissez tous les champs correctement','danger'); return; }
   try {
     if (id) await sbUpdate('drugs', id, {name, stock});
     else await sbInsert('drugs', {name, stock});
-    closeModal('drugModal');
-    renderDrugs();
-    toast(id ? 'Produit modifié' : 'Produit ajouté', 'success');
-  } catch(e) {
-    showAlert('alertDrugModal', 'Erreur: ' + e.message, 'danger');
-  }
+    closeModal('drugModal'); renderDrugs(); toast(id?'Produit modifié':'Produit ajouté','success');
+  } catch(e) { showAlert('alertDrugModal','Erreur: '+e.message,'danger'); }
 }
-
 function deleteDrug(id, name) {
   confirm2(`<strong>Supprimer "${name}" ?</strong>Les ventes associées resteront dans l'historique.`, async () => {
-    try {
-      await sbDelete('drugs', id);
-      renderDrugs();
-      toast('Produit supprimé', 'warning');
-    } catch(e) {
-      toast('Erreur: ' + e.message, 'danger');
-    }
+    try { await sbDelete('drugs', id); renderDrugs(); toast('Produit supprimé','warning'); }
+    catch(e) { toast('Erreur: '+e.message,'danger'); }
   });
 }
 
@@ -1123,29 +1304,26 @@ document.getElementById('btnAddMember').onclick = () => {
 
 async function renderMembersAdmin() {
   const tbody = document.getElementById('membersTable');
-  tbody.innerHTML = `<tr><td colspan="9">${loader()}</td></tr>`;
+  tbody.innerHTML = `<tr><td colspan="11">${loader()}</td></tr>`;
   try {
-    const [members, sales, activities] = await Promise.all([
-      sbGet('members'), sbGet('sales'), sbGet('activities')
+    const [members, sales, activities, runs] = await Promise.all([
+      sbGet('members'), sbGet('sales'), sbGet('activities'), sbGet('runs').catch(()=>[])
     ]);
-    if (!members.length) {
-      tbody.innerHTML = '<tr><td colspan="9"><div class="empty">Aucun membre créé</div></td></tr>';
-      return;
-    }
+    if (!members.length) { tbody.innerHTML = '<tr><td colspan="11"><div class="empty">Aucun membre créé</div></td></tr>'; return; }
     tbody.innerHTML = members.map((m, i) => {
       const mSales = sales.filter(s => s.member_id === m.id);
       const mActs = activities.filter(a => a.member_id === m.id);
-      const salesMoney = mSales.reduce((s, x) => s + Number(x.money_earned), 0);
-      const actsMoney = mActs.reduce((s, x) => s + Number(x.money_earned), 0);
+      const mRuns = runs.filter(r => r.member_id === m.id);
+      const salesMoney = mSales.reduce((s,x)=>s+Number(x.money_earned),0);
+      const actsMoney = mActs.reduce((s,x)=>s+Number(x.money_earned),0);
+      const runsMoney = mRuns.reduce((s,x)=>s+Number(x.money_earned),0);
       return `<tr>
-        <td>${i+1}</td>
-        <td><strong>${m.username}</strong></td>
+        <td>${i+1}</td><td><strong>${m.username}</strong></td>
         <td><span class="badge badge-gold">${m.grade}</span></td>
-        <td><span class="badge ${m.status === 'online' ? 'badge-green' : 'badge-gray'}">${m.status === 'online' ? 'En ligne' : 'Absent'}</span></td>
-        <td>${mSales.length}</td>
-        <td class="mono" style="color:var(--gold)">${fmtMoney(salesMoney)}</td>
-        <td>${mActs.length}</td>
-        <td class="mono" style="color:var(--gold)">${fmtMoney(actsMoney)}</td>
+        <td><span class="badge ${m.status==='online'?'badge-green':'badge-gray'}">${m.status==='online'?'En ligne':'Absent'}</span></td>
+        <td>${mSales.length}</td><td class="mono" style="color:var(--red3)">${fmtMoney(salesMoney)}</td>
+        <td>${mActs.length}</td><td class="mono" style="color:var(--red3)">${fmtMoney(actsMoney)}</td>
+        <td>${mRuns.length}</td><td class="mono" style="color:var(--green2)">${fmtMoney(runsMoney)}</td>
         <td><div class="td-actions">
           <button class="btn btn-warning" onclick="openEditMember('${m.id}','${m.username.replace(/'/g,"\\'")}','${m.grade}')">${ico('ico-edit','icon-sm')} Edit</button>
           <button class="btn btn-danger" onclick="deleteMember('${m.id}','${m.username.replace(/'/g,"\\'")}')">${ico('ico-trash','icon-sm')} Suppr.</button>
@@ -1153,7 +1331,7 @@ async function renderMembersAdmin() {
       </tr>`;
     }).join('');
   } catch(e) {
-    tbody.innerHTML = `<tr><td colspan="9"><div class="alert alert-danger">Erreur: ${e.message}</div></td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="11"><div class="alert alert-danger">Erreur: ${e.message}</div></td></tr>`;
   }
 }
 
@@ -1161,19 +1339,15 @@ async function createMember() {
   const username = document.getElementById('memberUsername').value.trim();
   const grade = document.getElementById('memberGrade').value;
   const password = document.getElementById('memberPassword').value.trim();
-  if (!username || !password) { showAlert('alertMemberCreate', 'Remplissez tous les champs', 'danger'); return; }
+  if (!username || !password) { showAlert('alertMemberCreate','Remplissez tous les champs','danger'); return; }
   try {
-    await sbInsert('members', {username, grade, password, status: 'absent'});
-    closeModal('memberModal');
-    renderMembersAdmin();
-    toast('Membre ' + username + ' créé', 'success');
+    await sbInsert('members', {username, grade, password, status:'absent'});
+    closeModal('memberModal'); renderMembersAdmin(); toast('Membre '+username+' créé','success');
   } catch(e) {
-    if (e.message.includes('unique') || e.message.includes('duplicate'))
-      showAlert('alertMemberCreate', 'Ce pseudo existe déjà', 'danger');
-    else showAlert('alertMemberCreate', 'Erreur: ' + e.message, 'danger');
+    if (e.message.includes('unique')||e.message.includes('duplicate')) showAlert('alertMemberCreate','Ce pseudo existe déjà','danger');
+    else showAlert('alertMemberCreate','Erreur: '+e.message,'danger');
   }
 }
-
 function openEditMember(id, username, grade) {
   document.getElementById('editMemberId').value = id;
   document.getElementById('editMemberUsername').value = username;
@@ -1182,37 +1356,27 @@ function openEditMember(id, username, grade) {
   document.getElementById('alertEditMember').innerHTML = '';
   openModal('editMemberModal');
 }
-
 async function saveEditMember() {
   const id = document.getElementById('editMemberId').value;
   const username = document.getElementById('editMemberUsername').value.trim();
   const grade = document.getElementById('editMemberGrade').value;
   const pwd = document.getElementById('editMemberPwd').value.trim();
-  if (!username) { showAlert('alertEditMember', 'Le pseudo ne peut pas être vide', 'danger'); return; }
+  if (!username) { showAlert('alertEditMember','Le pseudo ne peut pas être vide','danger'); return; }
   const data = {username, grade};
   if (pwd) data.password = pwd;
   try {
-    await sbUpdate('members', id, data);
-    closeModal('editMemberModal');
-    renderMembersAdmin();
-    toast('Membre modifié', 'success');
-  } catch(e) {
-    showAlert('alertEditMember', 'Erreur: ' + e.message, 'danger');
-  }
+    await sbUpdate('members', id, data); closeModal('editMemberModal'); renderMembersAdmin(); toast('Membre modifié','success');
+  } catch(e) { showAlert('alertEditMember','Erreur: '+e.message,'danger'); }
 }
-
 function deleteMember(id, username) {
-  confirm2(`<strong>Supprimer le membre "${username}" ?</strong>Ses ventes et activités seront également supprimées.`, async () => {
+  confirm2(`<strong>Supprimer le membre "${username}" ?</strong>Ses ventes, activités et runs seront également supprimés.`, async () => {
     try {
-      // Delete member sales and activities first
-      const r1 = await fetch(`${SB_URL}/rest/v1/sales?member_id=eq.${id}`, {method:'DELETE', headers:sbHeaders()});
-      const r2 = await fetch(`${SB_URL}/rest/v1/activities?member_id=eq.${id}`, {method:'DELETE', headers:sbHeaders()});
+      await fetch(`${SB_URL}/rest/v1/sales?member_id=eq.${id}`,{method:'DELETE',headers:sbHeaders()});
+      await fetch(`${SB_URL}/rest/v1/activities?member_id=eq.${id}`,{method:'DELETE',headers:sbHeaders()});
+      await fetch(`${SB_URL}/rest/v1/runs?member_id=eq.${id}`,{method:'DELETE',headers:sbHeaders()}).catch(()=>{});
       await sbDelete('members', id);
-      renderMembersAdmin();
-      toast('Membre supprimé', 'warning');
-    } catch(e) {
-      toast('Erreur: ' + e.message, 'danger');
-    }
+      renderMembersAdmin(); toast('Membre supprimé','warning');
+    } catch(e) { toast('Erreur: '+e.message,'danger'); }
   });
 }
 
@@ -1224,38 +1388,29 @@ async function renderAdminSales() {
   document.getElementById('salesTable').innerHTML = `<tr><td colspan="6">${loader()}</td></tr>`;
   try {
     const sales = await sbGet('sales');
-    const total = sales.reduce((s, x) => s + Number(x.money_earned), 0);
-    const totalQty = sales.reduce((s, x) => s + Number(x.qty_sold), 0);
+    const total = sales.reduce((s,x)=>s+Number(x.money_earned),0);
+    const totalQty = sales.reduce((s,x)=>s+Number(x.qty_sold),0);
     const byDrug = {};
-    sales.forEach(s => { byDrug[s.drug_name] = (byDrug[s.drug_name] || 0) + Number(s.money_earned); });
-    const top = Object.entries(byDrug).sort((a, b) => b[1] - a[1])[0];
-
+    sales.forEach(s=>{byDrug[s.drug_name]=(byDrug[s.drug_name]||0)+Number(s.money_earned);});
+    const top = Object.entries(byDrug).sort((a,b)=>b[1]-a[1])[0];
     document.getElementById('salesStats').innerHTML = `
       <div class="stat-card"><div class="stat-value">${sales.length}</div><div class="stat-label">Transactions</div></div>
       <div class="stat-card"><div class="stat-value">${totalQty.toFixed(1)} g</div><div class="stat-label">Total vendu</div></div>
       <div class="stat-card"><div class="stat-value">${fmtMoney(total)}</div><div class="stat-label">Total gains</div></div>
-      <div class="stat-card"><div class="stat-value" style="font-size:1.1rem">${top ? top[0] : '—'}</div><div class="stat-label">Meilleur produit</div></div>`;
-
-    document.getElementById('salesTable').innerHTML = sales.length ? sales.map(s => `<tr>
+      <div class="stat-card"><div class="stat-value" style="font-size:1.1rem">${top?top[0]:'—'}</div><div class="stat-label">Meilleur produit</div></div>`;
+    document.getElementById('salesTable').innerHTML = sales.length ? sales.map(s=>`<tr>
       <td style="font-size:.75rem;color:var(--text2)">${fmtDate(s.created_at)}</td>
-      <td><strong>${s.member_name}</strong></td>
-      <td>${s.drug_name}</td>
+      <td><strong>${s.member_name}</strong></td><td>${s.drug_name}</td>
       <td class="mono">${Number(s.qty_sold).toFixed(1)} g</td>
       <td class="mono" style="color:var(--gold)">${fmtMoney(s.money_earned)}</td>
       <td><button class="btn btn-danger" onclick="deleteSale('${s.id}')">${ico('ico-trash','icon-sm')} Suppr.</button></td>
     </tr>`).join('') : '<tr><td colspan="6"><div class="empty">Aucune vente enregistrée</div></td></tr>';
-  } catch(e) {
-    document.getElementById('salesStats').innerHTML = `<div class="alert alert-danger">Erreur: ${e.message}</div>`;
-  }
+  } catch(e) { document.getElementById('salesStats').innerHTML = `<div class="alert alert-danger">Erreur: ${e.message}</div>`; }
 }
-
 async function deleteSale(id) {
   confirm2('<strong>Supprimer cette vente ?</strong>Cette action est irréversible.', async () => {
-    try {
-      await sbDelete('sales', id);
-      renderAdminSales();
-      toast('Vente supprimée', 'warning');
-    } catch(e) { toast('Erreur: ' + e.message, 'danger'); }
+    try { await sbDelete('sales',id); renderAdminSales(); toast('Vente supprimée','warning'); }
+    catch(e) { toast('Erreur: '+e.message,'danger'); }
   });
 }
 
@@ -1267,37 +1422,134 @@ async function renderAdminActivities() {
   document.getElementById('activitiesTable').innerHTML = `<tr><td colspan="5">${loader()}</td></tr>`;
   try {
     const acts = await sbGet('activities');
-    const cambs = acts.filter(a => a.type === 'cambriolage');
-    const atms = acts.filter(a => a.type === 'atm');
-    const cMoney = cambs.reduce((s, x) => s + Number(x.money_earned), 0);
-    const aMoney = atms.reduce((s, x) => s + Number(x.money_earned), 0);
-
+    const cambs = acts.filter(a=>a.type==='cambriolage');
+    const atms = acts.filter(a=>a.type==='atm');
+    const cMoney = cambs.reduce((s,x)=>s+Number(x.money_earned),0);
+    const aMoney = atms.reduce((s,x)=>s+Number(x.money_earned),0);
     document.getElementById('actStats').innerHTML = `
       <div class="stat-card"><div class="stat-value">${cambs.length}</div><div class="stat-label">Cambriolages</div></div>
       <div class="stat-card"><div class="stat-value">${fmtMoney(cMoney)}</div><div class="stat-label">Gains camb.</div></div>
       <div class="stat-card"><div class="stat-value">${atms.length}</div><div class="stat-label">ATM</div></div>
       <div class="stat-card"><div class="stat-value">${fmtMoney(aMoney)}</div><div class="stat-label">Gains ATM</div></div>
-      <div class="stat-card"><div class="stat-value">${fmtMoney(cMoney + aMoney)}</div><div class="stat-label">Total</div></div>`;
-
-    document.getElementById('activitiesTable').innerHTML = acts.length ? acts.map(a => `<tr>
+      <div class="stat-card"><div class="stat-value">${fmtMoney(cMoney+aMoney)}</div><div class="stat-label">Total</div></div>`;
+    document.getElementById('activitiesTable').innerHTML = acts.length ? acts.map(a=>`<tr>
       <td style="font-size:.75rem;color:var(--text2)">${fmtDate(a.created_at)}</td>
       <td><strong>${a.member_name}</strong></td>
-      <td><span class="badge ${a.type === 'cambriolage' ? 'badge-red' : 'badge-blue'}">${a.type === 'cambriolage' ? 'CAMBRIOLAGE' : 'ATM'}</span></td>
+      <td><span class="badge ${a.type==='cambriolage'?'badge-red':'badge-blue'}">${a.type==='cambriolage'?'CAMBRIOLAGE':'ATM'}</span></td>
       <td class="mono" style="color:var(--gold)">${fmtMoney(a.money_earned)}</td>
       <td><button class="btn btn-danger" onclick="deleteActivity('${a.id}')">${ico('ico-trash','icon-sm')} Suppr.</button></td>
     </tr>`).join('') : '<tr><td colspan="5"><div class="empty">Aucune activité enregistrée</div></td></tr>';
+  } catch(e) { document.getElementById('actStats').innerHTML = `<div class="alert alert-danger">Erreur: ${e.message}</div>`; }
+}
+async function deleteActivity(id) {
+  confirm2('<strong>Supprimer cette opération ?</strong>Cette action est irréversible.', async () => {
+    try { await sbDelete('activities',id); renderAdminActivities(); toast('Opération supprimée','warning'); }
+    catch(e) { toast('Erreur: '+e.message,'danger'); }
+  });
+}
+
+// ===================================================
+// ADMIN RUNS
+// ===================================================
+async function renderAdminRuns() {
+  document.getElementById('adminRunStats').innerHTML = loader();
+  document.getElementById('adminRunsTable').innerHTML = `<tr><td colspan="5">${loader()}</td></tr>`;
+  try {
+    const runs = await sbGet('runs');
+    const total = runs.reduce((s,x)=>s+Number(x.money_earned),0);
+    const byCompany = {};
+    runs.forEach(r=>{byCompany[r.company||'Autre']=(byCompany[r.company||'Autre']||0)+Number(r.money_earned);});
+    const topCo = Object.entries(byCompany).sort((a,b)=>b[1]-a[1])[0];
+    document.getElementById('adminRunStats').innerHTML = `
+      <div class="stat-card"><div class="stat-value">${runs.length}</div><div class="stat-label">Runs totaux</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--green2)">${fmtMoney(total)}</div><div class="stat-label">Total propre</div></div>
+      <div class="stat-card"><div class="stat-value" style="font-size:1.1rem">${topCo?topCo[0]:'—'}</div><div class="stat-label">Meilleure source</div></div>
+      <div class="stat-card"><div class="stat-value">${runs.length?fmtMoney(Math.round(total/runs.length)):'$0'}</div><div class="stat-label">Moy. par run</div></div>`;
+    document.getElementById('adminRunsTable').innerHTML = runs.length ? runs.map(r=>`<tr>
+      <td style="font-size:.75rem;color:var(--text2)">${fmtDate(r.created_at)}</td>
+      <td><strong>${r.member_name}</strong></td>
+      <td>${r.company||'—'}</td>
+      <td class="mono" style="color:var(--green2)">${fmtMoney(r.money_earned)}</td>
+      <td><button class="btn btn-danger" onclick="deleteRun('${r.id}')">${ico('ico-trash','icon-sm')} Suppr.</button></td>
+    </tr>`).join('') : '<tr><td colspan="5"><div class="empty">Aucun run enregistré</div></td></tr>';
   } catch(e) {
-    document.getElementById('actStats').innerHTML = `<div class="alert alert-danger">Erreur: ${e.message}</div>`;
+    document.getElementById('adminRunStats').innerHTML = `<div class="alert alert-danger">Erreur: ${e.message}</div>`;
+  }
+}
+async function deleteRun(id) {
+  confirm2('<strong>Supprimer ce run ?</strong>Cette action est irréversible.', async () => {
+    try { await sbDelete('runs',id); renderAdminRuns(); toast('Run supprimé','warning'); }
+    catch(e) { toast('Erreur: '+e.message,'danger'); }
+  });
+}
+
+// ===================================================
+// INVOICES (ADMIN)
+// ===================================================
+document.getElementById('btnAddInvoice').onclick = () => {
+  document.getElementById('invoiceModalTitle').textContent = 'Nouvelle facture';
+  document.getElementById('invoiceEditId').value = '';
+  document.getElementById('invoiceItem').value = '';
+  document.getElementById('invoicePrice').value = '';
+  document.getElementById('invoiceMoneyType').value = 'sale';
+  document.getElementById('alertInvoiceModal').innerHTML = '';
+  openModal('invoiceModal');
+};
+
+async function renderInvoices() {
+  document.getElementById('invoiceStats').innerHTML = loader();
+  document.getElementById('invoicesTable').innerHTML = `<tr><td colspan="5">${loader()}</td></tr>`;
+  try {
+    const invoices = await sbGet('invoices');
+    const totalSale = invoices.filter(i=>i.money_type==='sale').reduce((s,x)=>s+Number(x.price),0);
+    const totalClean = invoices.filter(i=>i.money_type==='clean').reduce((s,x)=>s+Number(x.price),0);
+    document.getElementById('invoiceStats').innerHTML = `
+      <div class="stat-card"><div class="stat-value">${invoices.length}</div><div class="stat-label">Factures totales</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--red3)">${fmtMoney(totalSale)}</div><div class="stat-label">Dépensé (sale)</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--orange2)">${fmtMoney(totalClean)}</div><div class="stat-label">Dépensé (propre)</div></div>
+      <div class="stat-card"><div class="stat-value">${fmtMoney(totalSale+totalClean)}</div><div class="stat-label">Total dépensé</div></div>`;
+    document.getElementById('invoicesTable').innerHTML = invoices.length ? invoices.map(inv=>`<tr>
+      <td style="font-size:.75rem;color:var(--text2)">${fmtDate(inv.created_at)}</td>
+      <td><strong>${inv.item}</strong></td>
+      <td><span class="badge ${inv.money_type==='sale'?'badge-red':'badge-green'}">${inv.money_type==='sale'?'💀 SALE':'✅ PROPRE'}</span></td>
+      <td class="mono" style="color:var(--orange2)">${fmtMoney(inv.price)}</td>
+      <td><div class="td-actions">
+        <button class="btn btn-warning" onclick="editInvoice('${inv.id}','${inv.item.replace(/'/g,"\\'")}',${inv.price},'${inv.money_type}')">${ico('ico-edit','icon-sm')} Edit</button>
+        <button class="btn btn-danger" onclick="deleteInvoice('${inv.id}')">${ico('ico-trash','icon-sm')} Suppr.</button>
+      </div></td>
+    </tr>`).join('') : '<tr><td colspan="5"><div class="empty">Aucune facture enregistrée</div></td></tr>';
+  } catch(e) {
+    document.getElementById('invoiceStats').innerHTML = `<div class="alert alert-danger">Erreur: ${e.message}</div>`;
   }
 }
 
-async function deleteActivity(id) {
-  confirm2('<strong>Supprimer cette opération ?</strong>Cette action est irréversible.', async () => {
-    try {
-      await sbDelete('activities', id);
-      renderAdminActivities();
-      toast('Opération supprimée', 'warning');
-    } catch(e) { toast('Erreur: ' + e.message, 'danger'); }
+function editInvoice(id, item, price, moneyType) {
+  document.getElementById('invoiceModalTitle').textContent = 'Modifier la facture';
+  document.getElementById('invoiceEditId').value = id;
+  document.getElementById('invoiceItem').value = item;
+  document.getElementById('invoicePrice').value = price;
+  document.getElementById('invoiceMoneyType').value = moneyType;
+  document.getElementById('alertInvoiceModal').innerHTML = '';
+  openModal('invoiceModal');
+}
+
+async function saveInvoice() {
+  const id = document.getElementById('invoiceEditId').value;
+  const item = document.getElementById('invoiceItem').value.trim();
+  const price = parseFloat(document.getElementById('invoicePrice').value);
+  const money_type = document.getElementById('invoiceMoneyType').value;
+  if (!item || isNaN(price) || price < 0) { showAlert('alertInvoiceModal','Remplissez tous les champs correctement','danger'); return; }
+  try {
+    if (id) await sbUpdate('invoices', id, {item, price, money_type});
+    else await sbInsert('invoices', {item, price, money_type});
+    closeModal('invoiceModal'); renderInvoices(); toast(id?'Facture modifiée':'Facture enregistrée','success');
+  } catch(e) { showAlert('alertInvoiceModal','Erreur: '+e.message,'danger'); }
+}
+
+async function deleteInvoice(id) {
+  confirm2('<strong>Supprimer cette facture ?</strong>Cette action est irréversible.', async () => {
+    try { await sbDelete('invoices',id); renderInvoices(); toast('Facture supprimée','warning'); }
+    catch(e) { toast('Erreur: '+e.message,'danger'); }
   });
 }
 
@@ -1306,38 +1558,40 @@ async function deleteActivity(id) {
 // ===================================================
 async function renderMemberHome() {
   try {
-    const mData = await sbGet('members', `id=eq.${currentUser.id}`);
+    const mData = await sbGet('members',`id=eq.${currentUser.id}`);
     if (mData.length) { currentUser = {...currentUser, ...mData[0]}; updateTopbar(); }
   } catch(e) {}
+  document.getElementById('welcomeTitle').textContent = 'Bienvenue, '+currentUser.username;
+  const st = currentUser.status||'absent';
+  document.getElementById('btnOnline').className = 'status-btn '+(st==='online'?'active-online':'');
+  document.getElementById('btnAbsent').className = 'status-btn '+(st==='absent'?'active-absent':'');
 
-  document.getElementById('welcomeTitle').textContent = 'Bienvenue, ' + currentUser.username;
-  const st = currentUser.status || 'absent';
-  document.getElementById('btnOnline').className = 'status-btn ' + (st === 'online' ? 'active-online' : '');
-  document.getElementById('btnAbsent').className = 'status-btn ' + (st === 'absent' ? 'active-absent' : '');
-
-  // Member stats
   try {
-    const [sales, activities] = await Promise.all([
-      sbGet('sales', `member_id=eq.${currentUser.id}`),
-      sbGet('activities', `member_id=eq.${currentUser.id}`)
+    const [sales, activities, runs] = await Promise.all([
+      sbGet('sales',`member_id=eq.${currentUser.id}`),
+      sbGet('activities',`member_id=eq.${currentUser.id}`),
+      sbGet('runs',`member_id=eq.${currentUser.id}`).catch(()=>[])
     ]);
-    const salesMoney = sales.reduce((s, x) => s + Number(x.money_earned), 0);
-    const actsMoney = activities.reduce((s, x) => s + Number(x.money_earned), 0);
+    const salesMoney = sales.reduce((s,x)=>s+Number(x.money_earned),0);
+    const actsMoney = activities.reduce((s,x)=>s+Number(x.money_earned),0);
+    const runsMoney = runs.reduce((s,x)=>s+Number(x.money_earned),0);
     document.getElementById('memberStats').innerHTML = `
       <div class="stat-card"><div class="stat-value">${sales.length}</div><div class="stat-label">Mes ventes</div></div>
-      <div class="stat-card"><div class="stat-value">${fmtMoney(salesMoney)}</div><div class="stat-label">Gains ventes</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--red3)">${fmtMoney(salesMoney)}</div><div class="stat-label">Gains ventes</div></div>
       <div class="stat-card"><div class="stat-value">${activities.length}</div><div class="stat-label">Opérations</div></div>
-      <div class="stat-card"><div class="stat-value">${fmtMoney(actsMoney)}</div><div class="stat-label">Gains ops</div></div>
-      <div class="stat-card"><div class="stat-value">${fmtMoney(salesMoney + actsMoney)}</div><div class="stat-label">Total gagné</div></div>`;
+      <div class="stat-card"><div class="stat-value" style="color:var(--red3)">${fmtMoney(actsMoney)}</div><div class="stat-label">Gains ops</div></div>
+      <div class="stat-card"><div class="stat-value">${runs.length}</div><div class="stat-label">Runs</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--green2)">${fmtMoney(runsMoney)}</div><div class="stat-label">Gains runs</div></div>
+      <div class="stat-card"><div class="stat-value">${fmtMoney(salesMoney+actsMoney+runsMoney)}</div><div class="stat-label">Total gagné</div></div>`;
   } catch(e) {}
 
   const grid = document.getElementById('memberStatusGrid');
   grid.innerHTML = loader();
   try {
     const members = await sbGet('members');
-    grid.innerHTML = members.map(m => `
-      <div class="member-card ${m.status === 'online' ? 'online' : 'absent'}">
-        <svg style="width:28px;height:28px;color:${m.status === 'online' ? 'var(--green2)' : 'var(--text3)'}"><use href="#ico-${m.status === 'online' ? 'online' : 'offline'}"/></svg>
+    grid.innerHTML = members.map(m=>`
+      <div class="member-card ${m.status==='online'?'online':'absent'}">
+        <svg style="width:28px;height:28px;color:${m.status==='online'?'var(--green2)':'var(--text3)'}"><use href="#ico-${m.status==='online'?'online':'offline'}"/></svg>
         <div class="mc-name">${m.username}</div>
         <div class="mc-grade">${m.grade}</div>
       </div>`).join('') || '<div class="empty">Aucun membre</div>';
@@ -1349,10 +1603,8 @@ async function renderMemberHome() {
 async function setStatus(st) {
   try {
     await sbUpdate('members', currentUser.id, {status: st});
-    currentUser.status = st;
-    renderMemberHome();
-    toast(st === 'online' ? 'Statut : En ligne' : 'Statut : Absent', 'info');
-  } catch(e) { toast('Erreur: ' + e.message, 'danger'); }
+    currentUser.status = st; renderMemberHome(); toast(st==='online'?'Statut : En ligne':'Statut : Absent','info');
+  } catch(e) { toast('Erreur: '+e.message,'danger'); }
 }
 
 // ===================================================
@@ -1364,41 +1616,28 @@ async function renderMemberDrugs() {
   tbody.innerHTML = `<tr><td colspan="4">${loader()}</td></tr>`;
   mstbody.innerHTML = `<tr><td colspan="4">${loader()}</td></tr>`;
   drugStockCache = {};
-
   try {
     const [drugs, allSales, mySales] = await Promise.all([
-      sbGet('drugs'),
-      sbGet('sales'),
-      sbGet('sales', `member_id=eq.${currentUser.id}`)
+      sbGet('drugs'), sbGet('sales'), sbGet('sales',`member_id=eq.${currentUser.id}`)
     ]);
-
-    // Build remaining stock
     tbody.innerHTML = drugs.length ? drugs.map(d => {
-      const soldTotal = allSales.filter(s => s.drug_id === d.id).reduce((a, x) => a + Number(x.qty_sold), 0);
-      const remaining = Math.max(0, Number(d.stock) - soldTotal);
+      const soldTotal = allSales.filter(s=>s.drug_id===d.id).reduce((a,x)=>a+Number(x.qty_sold),0);
+      const remaining = Math.max(0, Number(d.stock)-soldTotal);
       drugStockCache[d.id] = remaining;
-      const pct = d.stock > 0 ? (remaining / d.stock * 100) : 0;
-      const col = pct < 20 ? 'var(--red3)' : pct < 50 ? 'var(--orange2)' : 'var(--green2)';
-      return `<tr>
-        <td><strong>${d.name}</strong></td>
-        <td class="mono">${Number(d.stock).toFixed(1)} g</td>
-        <td class="mono">${soldTotal.toFixed(1)} g</td>
-        <td class="mono" style="color:${col}">${remaining.toFixed(1)} g</td>
-      </tr>`;
+      const pct = d.stock>0?(remaining/d.stock*100):0;
+      const col = pct<20?'var(--red3)':pct<50?'var(--orange2)':'var(--green2)';
+      return `<tr><td><strong>${d.name}</strong></td><td class="mono">${Number(d.stock).toFixed(1)} g</td><td class="mono">${soldTotal.toFixed(1)} g</td><td class="mono" style="color:${col}">${remaining.toFixed(1)} g</td></tr>`;
     }).join('') : '<tr><td colspan="4"><div class="empty">Aucun produit disponible</div></td></tr>';
 
-    // Drug select
     const sel = document.getElementById('sellDrug');
     sel.innerHTML = drugs.length
-      ? drugs.map(d => `<option value="${d.id}">${d.name} (${drugStockCache[d.id]?.toFixed(1) || '0'} g restants)</option>`).join('')
+      ? drugs.map(d=>`<option value="${d.id}">${d.name} (${drugStockCache[d.id]?.toFixed(1)||'0'} g restants)</option>`).join('')
       : '<option value="">Aucun produit</option>';
     updateStockHint();
 
-    // My sales
-    mstbody.innerHTML = mySales.length ? mySales.map(s => `<tr>
+    mstbody.innerHTML = mySales.length ? mySales.map(s=>`<tr>
       <td style="font-size:.75rem;color:var(--text2)">${fmtDate(s.created_at)}</td>
-      <td>${s.drug_name}</td>
-      <td class="mono">${Number(s.qty_sold).toFixed(1)} g</td>
+      <td>${s.drug_name}</td><td class="mono">${Number(s.qty_sold).toFixed(1)} g</td>
       <td class="mono" style="color:var(--gold)">${fmtMoney(s.money_earned)}</td>
     </tr>`).join('') : '<tr><td colspan="4"><div class="empty">Aucune vente déclarée</div></td></tr>';
   } catch(e) {
@@ -1408,55 +1647,33 @@ async function renderMemberDrugs() {
 
 function updateStockHint() {
   const drugId = document.getElementById('sellDrug').value;
-  const qty = parseFloat(document.getElementById('sellQty').value) || 0;
+  const qty = parseFloat(document.getElementById('sellQty').value)||0;
   const hint = document.getElementById('stockHint');
-  if (!drugId || !hint) return;
-  const remaining = drugStockCache[drugId] ?? null;
-  if (remaining === null) { hint.style.display = 'none'; return; }
-  hint.style.display = 'block';
-  if (qty > 0 && qty > remaining) {
-    hint.className = 'stock-warning';
-    hint.textContent = `⚠ Stock insuffisant (${remaining.toFixed(1)} g restants)`;
-  } else {
-    hint.className = 'stock-ok';
-    hint.textContent = `✓ Stock disponible: ${remaining.toFixed(1)} g`;
-  }
+  if (!drugId||!hint) return;
+  const remaining = drugStockCache[drugId]??null;
+  if (remaining===null){hint.style.display='none';return;}
+  hint.style.display='block';
+  if (qty>0&&qty>remaining){hint.className='stock-warning';hint.textContent=`⚠ Stock insuffisant (${remaining.toFixed(1)} g restants)`;}
+  else{hint.className='stock-ok';hint.textContent=`✓ Stock disponible: ${remaining.toFixed(1)} g`;}
 }
 
 async function submitSale() {
   const drugId = document.getElementById('sellDrug').value;
   const qty = parseFloat(document.getElementById('sellQty').value);
   const money = parseFloat(document.getElementById('sellMoney').value);
-  if (!drugId || isNaN(qty) || qty <= 0 || isNaN(money) || money < 0) {
-    showAlert('alertSell', 'Remplissez tous les champs correctement', 'danger');
-    return;
-  }
-  // Check stock
-  const remaining = drugStockCache[drugId] ?? Infinity;
-  if (qty > remaining) {
-    showAlert('alertSell', `Stock insuffisant — il reste ${remaining.toFixed(1)} g`, 'danger');
-    return;
-  }
+  if (!drugId||isNaN(qty)||qty<=0||isNaN(money)||money<0){showAlert('alertSell','Remplissez tous les champs correctement','danger');return;}
+  const remaining = drugStockCache[drugId]??Infinity;
+  if (qty>remaining){showAlert('alertSell',`Stock insuffisant — il reste ${remaining.toFixed(1)} g`,'danger');return;}
   try {
-    const drugs = await sbGet('drugs', `id=eq.${drugId}`);
-    if (!drugs.length) { showAlert('alertSell', 'Produit introuvable', 'danger'); return; }
-    const drug = drugs[0];
-    await sbInsert('sales', {
-      member_id: currentUser.id,
-      member_name: currentUser.username,
-      drug_id: drugId,
-      drug_name: drug.name,
-      qty_sold: qty,
-      money_earned: money
-    });
-    document.getElementById('sellQty').value = '';
-    document.getElementById('sellMoney').value = '';
-    showAlert('alertSell', 'Vente enregistrée avec succès !', 'success');
-    toast('Vente déclarée — ' + drug.name, 'success');
+    const drugs = await sbGet('drugs',`id=eq.${drugId}`);
+    if (!drugs.length){showAlert('alertSell','Produit introuvable','danger');return;}
+    await sbInsert('sales',{member_id:currentUser.id,member_name:currentUser.username,drug_id:drugId,drug_name:drugs[0].name,qty_sold:qty,money_earned:money});
+    document.getElementById('sellQty').value='';
+    document.getElementById('sellMoney').value='';
+    showAlert('alertSell','Vente enregistrée avec succès !','success');
+    toast('Vente déclarée — '+drugs[0].name,'success');
     renderMemberDrugs();
-  } catch(e) {
-    showAlert('alertSell', 'Erreur: ' + e.message, 'danger');
-  }
+  } catch(e){showAlert('alertSell','Erreur: '+e.message,'danger');}
 }
 
 // ===================================================
@@ -1470,10 +1687,10 @@ async function renderActivities() {
   const tbody = document.getElementById('myActivitiesTable');
   tbody.innerHTML = `<tr><td colspan="3">${loader()}</td></tr>`;
   try {
-    const acts = await sbGet('activities', `member_id=eq.${currentUser.id}`);
-    tbody.innerHTML = acts.length ? acts.map(a => `<tr>
+    const acts = await sbGet('activities',`member_id=eq.${currentUser.id}`);
+    tbody.innerHTML = acts.length ? acts.map(a=>`<tr>
       <td style="font-size:.75rem;color:var(--text2)">${fmtDate(a.created_at)}</td>
-      <td><span class="badge ${a.type === 'cambriolage' ? 'badge-red' : 'badge-blue'}">${a.type === 'cambriolage' ? 'CAMBRIOLAGE' : 'ATM'}</span></td>
+      <td><span class="badge ${a.type==='cambriolage'?'badge-red':'badge-blue'}">${a.type==='cambriolage'?'CAMBRIOLAGE':'ATM'}</span></td>
       <td class="mono" style="color:var(--gold)">${fmtMoney(a.money_earned)}</td>
     </tr>`).join('') : '<tr><td colspan="3"><div class="empty">Aucune activité déclarée</div></td></tr>';
   } catch(e) {
@@ -1483,9 +1700,9 @@ async function renderActivities() {
 
 function selectActivity(type) {
   selectedActivity = type;
-  document.getElementById('actCamb').classList.toggle('selected', type === 'cambriolage');
-  document.getElementById('actAtm').classList.toggle('selected', type === 'atm');
-  document.getElementById('actFormTitle').innerHTML = type === 'cambriolage'
+  document.getElementById('actCamb').classList.toggle('selected',type==='cambriolage');
+  document.getElementById('actAtm').classList.toggle('selected',type==='atm');
+  document.getElementById('actFormTitle').innerHTML = type==='cambriolage'
     ? `${ico('ico-house','icon-sm')} Déclarer un cambriolage`
     : `${ico('ico-atm','icon-sm')} Déclarer un braquage ATM`;
   document.getElementById('activityForm').style.display = 'block';
@@ -1494,29 +1711,59 @@ function selectActivity(type) {
 }
 
 async function submitActivity() {
-  if (!selectedActivity) { showAlert('alertAct', 'Sélectionnez un type d\'opération', 'danger'); return; }
+  if (!selectedActivity){showAlert('alertAct','Sélectionnez un type d\'opération','danger');return;}
   const money = parseFloat(document.getElementById('actMoney').value);
-  if (isNaN(money) || money < 0) { showAlert('alertAct', 'Entrez un montant valide', 'danger'); return; }
+  if (isNaN(money)||money<0){showAlert('alertAct','Entrez un montant valide','danger');return;}
   try {
-    await sbInsert('activities', {
-      member_id: currentUser.id,
-      member_name: currentUser.username,
-      type: selectedActivity,
-      money_earned: money
-    });
-    showAlert('alertAct', 'Opération enregistrée avec succès !', 'success');
-    toast('Opération déclarée — ' + (selectedActivity === 'cambriolage' ? 'Cambriolage' : 'ATM'), 'success');
+    await sbInsert('activities',{member_id:currentUser.id,member_name:currentUser.username,type:selectedActivity,money_earned:money});
+    showAlert('alertAct','Opération enregistrée avec succès !','success');
+    toast('Opération déclarée — '+(selectedActivity==='cambriolage'?'Cambriolage':'ATM'),'success');
     renderActivities();
+  } catch(e){showAlert('alertAct','Erreur: '+e.message,'danger');}
+}
+
+// ===================================================
+// MEMBER & ADMIN RUNS
+// ===================================================
+async function renderMemberRuns() {
+  const tbody = document.getElementById('myRunsTable');
+  tbody.innerHTML = `<tr><td colspan="3">${loader()}</td></tr>`;
+  try {
+    const runs = await sbGet('runs',`member_id=eq.${currentUser.id}`);
+    const total = runs.reduce((s,x)=>s+Number(x.money_earned),0);
+    document.getElementById('memberRunStats').innerHTML = `
+      <div class="stat-card"><div class="stat-value">${runs.length}</div><div class="stat-label">Mes runs</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--green2)">${fmtMoney(total)}</div><div class="stat-label">Total propre</div></div>
+      <div class="stat-card"><div class="stat-value">${runs.length?fmtMoney(Math.round(total/runs.length)):'$0'}</div><div class="stat-label">Moy. par run</div></div>`;
+    tbody.innerHTML = runs.length ? runs.map(r=>`<tr>
+      <td style="font-size:.75rem;color:var(--text2)">${fmtDate(r.created_at)}</td>
+      <td>${r.company||'—'}</td>
+      <td class="mono" style="color:var(--green2)">${fmtMoney(r.money_earned)}</td>
+    </tr>`).join('') : '<tr><td colspan="3"><div class="empty">Aucun run déclaré</div></td></tr>';
   } catch(e) {
-    showAlert('alertAct', 'Erreur: ' + e.message, 'danger');
+    tbody.innerHTML = `<tr><td colspan="3"><div class="alert alert-danger">Erreur: ${e.message}</div></td></tr>`;
   }
+}
+
+async function submitRun() {
+  const company = document.getElementById('runCompany').value.trim();
+  const money = parseFloat(document.getElementById('runMoney').value);
+  if (!company||isNaN(money)||money<0){showAlert('alertRun','Remplissez tous les champs correctement','danger');return;}
+  try {
+    await sbInsert('runs',{member_id:currentUser.id,member_name:currentUser.username,company,money_earned:money});
+    document.getElementById('runCompany').value='';
+    document.getElementById('runMoney').value='';
+    showAlert('alertRun','Run enregistré avec succès !','success');
+    toast('Run déclaré — '+company,'success');
+    renderMemberRuns();
+  } catch(e){showAlert('alertRun','Erreur: '+e.message,'danger');}
 }
 
 // ===================================================
 // GRADES & RULES
 // ===================================================
 function renderGrades() {
-  document.getElementById('gradesGrid').innerHTML = GRADES.map(g => `
+  document.getElementById('gradesGrid').innerHTML = GRADES.map(g=>`
     <div class="grade-card" data-num="${g.rank}">
       <div class="grade-name">${g.name}</div>
       <div class="grade-desc">${g.desc}</div>
@@ -1524,7 +1771,7 @@ function renderGrades() {
 }
 
 function renderRules() {
-  document.getElementById('rulesList').innerHTML = RULES.map(r => `
+  document.getElementById('rulesList').innerHTML = RULES.map(r=>`
     <div class="rule-item">
       <div class="rule-num">${r.num}</div>
       <div class="rule-text">${r.text}</div>
